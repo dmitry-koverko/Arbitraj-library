@@ -1,0 +1,3 @@
+include ':arbitrajlibrary'
+include ':app'
+rootProject.name = "ArbitrajLibrary"
