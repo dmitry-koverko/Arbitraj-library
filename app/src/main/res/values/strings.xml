@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ArbitrajLibrary</string>
+    <string name="host">https://koverko-developer.github.io/?</string>
+    <string name="facebook_app_id">304923447884758</string>
+    <string name="fb_login_protocol_scheme">fb304923447884758</string>
+    <string name="af_dev_key">BH6rsrXz6Dw3x8UmZ8Zc48</string>
 </resources>

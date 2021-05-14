@@ -12,8 +12,10 @@ public class UserData implements IUserData{
     private SharedPreferences.Editor prefEditor;
     private Context mContext;
     private static final String PREFS_FILE = "User";
+    public static final String PREF_HOST = "host";
     public static final String PREF_LINK = "Link";
     public static final String PREF_NAMING= "Naming";
+    public static final String PREF_AF_DEV_KEY= "AF_DEV_KEY";
 
     public UserData(Context context){
         mContext = context;
