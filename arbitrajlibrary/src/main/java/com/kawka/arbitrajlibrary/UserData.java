@@ -20,7 +20,9 @@ public class UserData implements IUserData{
     public static final String PREF_LINK = "Link";
     public static final String PREF_NAMING= "Naming";
     public static final String PREF_USER_KEY= "User_key";
+    public static final String PREF_YANDEX_KEY= "Yandex_key";
     public static final String PREF_AF_DEV_KEY= "AF_DEV_KEY";
+    public static final String PREF_OneSignal_KEY= "ONE_SIGNAL_KEY";
 
     private static final String ALLOWED_CHARACTERS ="0123456789qwertyuiopasdfghjklzxcvbnm";
 

@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
+import com.google.firebase.FirebaseApp;
 import com.kawka.arbitrajlibrary.UserData;
 import com.kawka.arbitrajlibrary.firebase.FEvents;
 
@@ -20,6 +21,7 @@ public class App extends Application {
 
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+        FirebaseApp.initializeApp(getApplicationContext());
 
         /*
             Проверяеи, чему равен хост по умолчанию, если он пустой, то выводим в логи ошибку

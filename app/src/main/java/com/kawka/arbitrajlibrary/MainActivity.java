@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kawka.arbitrajlibrary.appsflyer.AppsFlyerCore;
 import com.kawka.arbitrajlibrary.fb.FBCore;
+import com.kawka.arbitrajlibrary.os.OSCore;
 import com.kawka.arbitrajlibrary.wv.ArbitrajWebView;
+import com.kawka.arbitrajlibrary.ynx.YandexApp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +46,17 @@ public class MainActivity extends AppCompatActivity {
             task();
         }else arbitrajWebView.start(getApplicationContext());
 
+
+        if(new UserData(getApplicationContext()).getUserData(UserData.PREF_YANDEX_KEY) == ""){
+            new UserData(getApplicationContext()).setUserData(UserData.PREF_YANDEX_KEY, getApplicationContext().getResources().getString(R.string.yandex));
+            YandexApp.start(getApplicationContext());
+        }else YandexApp.start(getApplicationContext());
+
+
+//        if(new UserData(getApplicationContext()).getUserData(UserData.PREF_OneSignal_KEY) == ""){
+//            new UserData(getApplicationContext()).setUserData(UserData.PREF_OneSignal_KEY, getApplicationContext().getResources().getString(R.string.one_signal));
+//            OSCore.start(getApplicationContext());
+//        }else OSCore.start(getApplicationContext());
 
     }
 

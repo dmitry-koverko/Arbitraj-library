@@ -1,5 +1,10 @@
+plugins {
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+}
+
 apply plugin: 'com.android.library'
 apply plugin: 'com.google.gms.google-services'
+
 
 android {
     compileSdkVersion 29
@@ -28,9 +33,13 @@ android {
     }
 }
 
+
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.firebase:firebase-messaging:21.1.0'
+    implementation 'androidx.work:work-runtime:2.5.0'
     testImplementation 'junit:junit:4.12'
 
     implementation 'com.appsflyer:af-android-sdk:6.0.0'
@@ -39,6 +48,10 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.0.1')
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-database:19.4.0'
+
+    implementation 'com.yandex.android:mobmetricalib:3.18.0'
+
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

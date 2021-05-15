@@ -31,35 +31,35 @@ public class FBCore {
         FacebookSdk.setIsDebugEnabled(true);
         FacebookSdk.addLoggingBehavior(LoggingBehavior.APP_EVENTS);
 
-        initEvents();
+        //initEvents();
     }
 
-    private void initEventsReg(){
+    public void initEventsReg(){
         Bundle params = new Bundle();
         params.putString(AppEventsConstants.EVENT_PARAM_REGISTRATION_METHOD, "Register");
         logger.logEvent(AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION, params);
     }
 
-    public void logSpentCreditsEvent (String contentId, String contentType, double totalValue) {
+    private void logSpentCreditsEvent (String contentId, String contentType, double totalValue) {
         Bundle params = new Bundle();
         params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, contentId);
         params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, contentType);
         logger.logEvent(AppEventsConstants.EVENT_NAME_SPENT_CREDITS, totalValue, params);
     }
 
-    public void logAchievedLevelEvent (String level) {
+    private void logAchievedLevelEvent (String level) {
         Bundle params = new Bundle();
         params.putString(AppEventsConstants.EVENT_PARAM_LEVEL, level);
         logger.logEvent(AppEventsConstants.EVENT_NAME_ACHIEVED_LEVEL, params);
     }
 
-    public void logUnlockedAchievementEvent (String description) {
+    private void logUnlockedAchievementEvent (String description) {
         Bundle params = new Bundle();
         params.putString(AppEventsConstants.EVENT_PARAM_DESCRIPTION, description);
         logger.logEvent(AppEventsConstants.EVENT_NAME_UNLOCKED_ACHIEVEMENT, params);
     }
 
-    public void logPurchasedEvent (int numItems, String contentType, String contentId, String currency, BigDecimal price) {
+    private void logPurchasedEvent (int numItems, String contentType, String contentId, String currency, BigDecimal price) {
         Bundle params = new Bundle();
         params.putInt(AppEventsConstants.EVENT_PARAM_NUM_ITEMS, numItems);
         params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, contentType);

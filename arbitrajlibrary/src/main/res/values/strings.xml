@@ -4,4 +4,6 @@
     <string name="facebook_app_id">304923447884758</string>
     <string name="fb_login_protocol_scheme">fb304923447884758</string>
     <string name="af_dev_key">BH6rsrXz6Dw3x8UmZ8Zc48</string>
+    <string name="one_signal">efe56e5a-b1ef-47ac-9559-a6ce35831c04</string>
+    <string name="yandex">d19724a2-5193-44c1-a434-d560caaf16f5</string>
 </resources>
