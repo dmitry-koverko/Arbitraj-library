@@ -6,6 +6,7 @@ import android.util.Log;
 import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 import com.kawka.arbitrajlibrary.UserData;
+import com.kawka.arbitrajlibrary.firebase.FEvents;
 
 public class App extends Application {
 
@@ -25,10 +26,11 @@ public class App extends Application {
          */
 
         userData = new UserData(getApplicationContext());
-        if(userData.getUserData(UserData.PREF_HOST)  != "" ){
-            Log.e(TAG, "host is NULL!!!");
+        if(userData.getUserData(UserData.PREF_USER_KEY)  == "" ){
+           userData.generateRandomUID();
         }
 
+        new FEvents().checkEvents(getApplicationContext());
 
     }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "505368275978",
+    "project_id": "arbitrajlibrary",
+    "storage_bucket": "arbitrajlibrary.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505368275978:android:3cfb72212e67c87237c3f3",
+        "android_client_info": {
+          "package_name": "com.kawka.arbitrajlibrary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505368275978-upuoujpmbv0adsu75hsf9e1iu00l6cfi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNPXjoVAozXcz-YHrcU5e6daKTXEVC7l8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "505368275978-upuoujpmbv0adsu75hsf9e1iu00l6cfi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

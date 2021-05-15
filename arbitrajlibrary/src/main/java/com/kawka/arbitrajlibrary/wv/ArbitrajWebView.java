@@ -8,8 +8,6 @@ import android.webkit.WebView;
 
 import com.kawka.arbitrajlibrary.UserData;
 
-import java.awt.font.TextAttribute;
-
 public class ArbitrajWebView extends WebView implements IWV{
 
     private final String TAG = ArbitrajWebView.class.getName();
@@ -38,7 +36,7 @@ public class ArbitrajWebView extends WebView implements IWV{
         this.getSettings().setLoadWithOverviewMode(true);
         this.getSettings().setDomStorageEnabled(true);
         this.setWebViewClient(new ArbitrajWebViewClient());
-
+        this.setVisibility(GONE);
     }
 
     @Override
@@ -58,8 +56,8 @@ public class ArbitrajWebView extends WebView implements IWV{
 
             if(uData.getUserData(UserData.PREF_LINK)  == ""){
 
-                String app_name = context.getPackageName();
-                loadUrl(uData.getUserData(UserData.PREF_HOST) + "app_name=" +app_name + "&naming=" + uData.getUserData(UserData.PREF_NAMING));
+                String app_name = context.getPackageName().replace(".", "");
+                loadUrl(uData.getUserData(UserData.PREF_HOST) + "app_name=" +app_name + "&naming=" + uData.getUserData(UserData.PREF_NAMING) + "&key=" + uData.getUserData(UserData.PREF_USER_KEY));
 
             }else {
                 loadUrl(uData.getUserData(UserData.PREF_LINK));

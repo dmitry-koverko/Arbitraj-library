@@ -1,16 +1,14 @@
 package com.kawka.arbitrajlibrary;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.kawka.arbitrajlibrary.appsflyer.AppsFlyerCore;
 import com.kawka.arbitrajlibrary.fb.FBCore;
 import com.kawka.arbitrajlibrary.wv.ArbitrajWebView;
-
-import java.awt.font.TextAttribute;
 
 public class MainActivity extends AppCompatActivity {
 
