@@ -70,6 +70,16 @@ implementation 'com.android.installreferrer:installreferrer:1.1'
    
    -- add OneSigal
    
+    Project-level build.gradle (<project>/build.gradle):
+    classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.12.10, 0.99.99]'
+   
+    App-level build.gradle (<project>/<app-module>/build.gradle):
+    plugins {
+        id 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+    }
+    implementation 'com.onesignal:OneSignal:[4.0.0, 4.99.99]'
+
+   
    if(new UserData(getApplicationContext()).getUserData(UserData.PREF_OneSignal_KEY) == ""){
                new UserData(getApplicationContext()).setUserData(UserData.PREF_OneSignal_KEY, getApplicationContext().getResources().getString(R.string.one_signal));
                YandexApp.start(getApplicationContext());
@@ -79,6 +89,15 @@ implementation 'com.android.installreferrer:installreferrer:1.1'
 
 
 -- Firebase  
+
+    Project-level build.gradle (<project>/build.gradle):
+    classpath 'com.google.gms:google-services:4.3.8'
+    
+    App-level build.gradle (<project>/<app-module>/build.gradle):
+    apply plugin: 'com.google.gms.google-services'
+    implementation platform('com.google.firebase:firebase-bom:28.0.1')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-messaging:21.1.0'
 
  <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
