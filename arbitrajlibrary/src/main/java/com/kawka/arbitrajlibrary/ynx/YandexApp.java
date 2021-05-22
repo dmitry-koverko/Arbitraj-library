@@ -11,9 +11,7 @@ public class YandexApp {
 
     public static void start(Context context){
         YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder(new UserData(context).getUserData(UserData.PREF_YANDEX_KEY)).build();
-        // Initializing the AppMetrica SDK.
         YandexMetrica.activate(context, config);
-        // Automatic tracking of user activity.
         YandexMetrica.enableActivityAutoTracking((Application) context);
     }
 

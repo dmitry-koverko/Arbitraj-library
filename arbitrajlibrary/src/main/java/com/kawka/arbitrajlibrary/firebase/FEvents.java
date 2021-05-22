@@ -7,6 +7,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -24,30 +25,14 @@ public class FEvents {
 
     private static final String TAG = FEvents.class.getName();
     private DatabaseReference mDatabase;
+    private AppEventsLogger mLogger;
 
-    public void checkEvents(Context context){
+    public void checkEvents(Context context, DatabaseReference database, AppEventsLogger logger){
         Log.d(TAG, "checkEvents_start");
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase = database;
+        mLogger = logger;
         String ch1 = context.getPackageName().replace(".", "")+"/events";
         String ch2 = new UserData(context).getUserData(UserData.PREF_USER_KEY);
-
-        FirebaseMessaging.getInstance().getToken()
-                .addOnCompleteListener(new OnCompleteListener<String>() {
-                    @Override
-                    public void onComplete(@NonNull Task<String> task) {
-                        if (!task.isSuccessful()) {
-                            Log.w(TAG, "Fetching FCM registration token failed", task.getException());
-                            return;
-                        }
-
-                        // Get new FCM registration token
-                        String token = task.getResult();
-
-
-                        Log.d(TAG, token);
-                        //Toast.makeText(context, token, Toast.LENGTH_SHORT).show();
-                    }
-                });
 
 
         ValueEventListener postListener = new ValueEventListener() {
@@ -56,7 +41,7 @@ public class FEvents {
                 // Get Post object and use the values to update the UI
                 String post = dataSnapshot.getValue(String.class);
                 String d = "";
-                if(post != null ) new FBCore(context).initEventsReg();
+                if(post != null ) new FBCore(context, mLogger).initEventsReg();
                 mDatabase.removeValue();
             }
 

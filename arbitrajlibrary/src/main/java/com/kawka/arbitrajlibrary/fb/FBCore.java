@@ -19,44 +19,36 @@ public class FBCore {
     private final String TAG = FBCore.class.getName();
 
     private Context mContext;
-    private AppEventsLogger logger;
+    private AppEventsLogger mLogger;
 
-    public FBCore(Context context){
+    public FBCore(Context context, AppEventsLogger logger){
         mContext = context;
-
-        logger = AppEventsLogger.newLogger(context);
-        FacebookSdk.setAutoInitEnabled(true);
-        setAutoLogAppEventsEnabled(true);
-        FacebookSdk.fullyInitialize();
-        FacebookSdk.setIsDebugEnabled(true);
-        FacebookSdk.addLoggingBehavior(LoggingBehavior.APP_EVENTS);
-
-        //initEvents();
+        mLogger = logger;
     }
 
     public void initEventsReg(){
         Bundle params = new Bundle();
         params.putString(AppEventsConstants.EVENT_PARAM_REGISTRATION_METHOD, "Register");
-        logger.logEvent(AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION, params);
+        mLogger.logEvent(AppEventsConstants.EVENT_NAME_COMPLETED_REGISTRATION, params);
     }
 
     private void logSpentCreditsEvent (String contentId, String contentType, double totalValue) {
         Bundle params = new Bundle();
         params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, contentId);
         params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, contentType);
-        logger.logEvent(AppEventsConstants.EVENT_NAME_SPENT_CREDITS, totalValue, params);
+        mLogger.logEvent(AppEventsConstants.EVENT_NAME_SPENT_CREDITS, totalValue, params);
     }
 
     private void logAchievedLevelEvent (String level) {
         Bundle params = new Bundle();
         params.putString(AppEventsConstants.EVENT_PARAM_LEVEL, level);
-        logger.logEvent(AppEventsConstants.EVENT_NAME_ACHIEVED_LEVEL, params);
+        mLogger.logEvent(AppEventsConstants.EVENT_NAME_ACHIEVED_LEVEL, params);
     }
 
     private void logUnlockedAchievementEvent (String description) {
         Bundle params = new Bundle();
         params.putString(AppEventsConstants.EVENT_PARAM_DESCRIPTION, description);
-        logger.logEvent(AppEventsConstants.EVENT_NAME_UNLOCKED_ACHIEVEMENT, params);
+        mLogger.logEvent(AppEventsConstants.EVENT_NAME_UNLOCKED_ACHIEVEMENT, params);
     }
 
     private void logPurchasedEvent (int numItems, String contentType, String contentId, String currency, BigDecimal price) {
@@ -65,10 +57,10 @@ public class FBCore {
         params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_TYPE, contentType);
         params.putString(AppEventsConstants.EVENT_PARAM_CONTENT_ID, contentId);
         params.putString(AppEventsConstants.EVENT_PARAM_CURRENCY, currency);
-        logger.logPurchase(price, Currency.getInstance("USD"), params);
+        mLogger.logPurchase(price, Currency.getInstance("USD"), params);
     }
 
-    private void initEvents(){
+    public void initEvents(){
         Log.d(TAG, "init events ---------------------------------");
         initEventsReg();
         logSpentCreditsEvent("content", "type", 2);
